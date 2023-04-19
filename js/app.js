@@ -1,17 +1,17 @@
-//Document is the DOM can be accessed in the console with document.window.
-// Tree is from the top, html, body, p etc.
+// ?Документ — это DOM, к которому можно получить доступ в консоли с помощью document.window.
+// ?Дерево сверху, html, body, p и т.д.
 
-//Problem: User interaction does not provide the correct results.
-//Solution: Add interactivity so the user can manage daily tasks.
-//Break things down into smaller steps and take each step at a time.
+// ?Проблема: взаимодействие с пользователем не дает правильных результатов.
+// ?Решение: добавьте интерактивность, чтобы пользователь мог управлять ежедневными задачами.
+// ?Разбейте все на более мелкие шаги и выполняйте каждый шаг за раз.
 
 
-// Event handling, user interaction is what starts the code execution.
+// ?Обработка событий, взаимодействие с пользователем — это то, что запускает выполнение кода.
 
-var taskInput=document.getElementById("new-task");//Add a new task.
-var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+const taskInput=document.getElementById("new-task");//Add a new task.
+const addButton=document.getElementsByTagName("button")[0];//first button
+const incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
+const completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
 //New task list item
@@ -44,7 +44,7 @@ var createNewTaskElement=function(taskString){
     editButton.className="edit";
 
     deleteButton.className="delete";
-    deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.src='./img/remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -63,7 +63,7 @@ var addTask=function(){
     console.log("Add Task...");
     //Create a new list item with the text from the #new-task:
     if (!taskInput.value) return;
-    var listItem=createNewTaskElement(taskInput.value);
+    const listItem=createNewTaskElement(taskInput.value);
 
     //Append listItem to incompleteTaskHolder
     incompleteTaskHolder.appendChild(listItem);
@@ -73,7 +73,7 @@ var addTask=function(){
 
 }
 
-//Edit an existing task.
+// ?----- Изменить существующую задачу. -------
 
 var editTask=function(){
     console.log("Edit Task...");
@@ -103,7 +103,7 @@ var editTask=function(){
 };
 
 
-//Delete task.
+// ?----------- Delete task -------------
 var deleteTask=function(){
     console.log("Delete Task...");
 
@@ -115,7 +115,7 @@ var deleteTask=function(){
 }
 
 
-//Mark task completed
+// ?------- Отметить задачу как выполненную --------
 var taskCompleted=function(){
     console.log("Complete Task...");
 
@@ -154,22 +154,26 @@ addButton.addEventListener("click",ajaxRequest);
 
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
-//select ListItems children
+
+    //?выберите дочерние элементы ListItems
     var checkBox=taskListItem.querySelector("input[type=checkbox]");
     var editButton=taskListItem.querySelector("button.edit");
     var deleteButton=taskListItem.querySelector("button.delete");
 
 
-    //Bind editTask to edit button.
+    //?Привязать editTask к кнопке редактирования.
     editButton.onclick=editTask;
-    //Bind deleteTask to delete button.
+
+    //?Привяжите deleteTask к кнопке удаления.
     deleteButton.onclick=deleteTask;
-    //Bind taskCompleted to checkBoxEventHandler.
+
+    //?Привяжите taskCompleted to checkBoxEventHandler.
     checkBox.onchange=checkBoxEventHandler;
 }
 
-//cycle over incompleteTaskHolder ul list items
-//for each list item
+
+//?цикл по неполным элементам списка incompleteTaskHolder ul list items
+//?для каждого элемента списка
 for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
     //bind events to list items chldren(tasksCompleted)
@@ -179,7 +183,7 @@ for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
 
 
-//cycle over completedTasksHolder ul list items
+//?цикл по завершенным элементам списка TasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
     //bind events to list items chldren(tasksIncompleted)
     bindTaskEvents(completedTasksHolder.children[i],taskIncomplete);
@@ -187,9 +191,8 @@ for (var i=0; i<completedTasksHolder.children.length;i++){
 
 
 
+// Проблемы с юзабилити не видны, пока они не окажутся перед тестировщиком.
 
-// Issues with usability don't get seen until they are in front of a human tester.
+//предотвратить создание пустых задач.
 
-//prevent creation of empty tasks.
-
-//Change edit to save when you are in edit mode.
+// Измените редактирование для сохранения, когда вы находитесь в режиме редактирования.

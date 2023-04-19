@@ -1,4 +1,4 @@
-/* Basic Style */
+/* !----------- Basic Style ------------- */
 body {
     background-color: #f8f8f8;
     color: #333;
@@ -13,13 +13,13 @@ body {
 .aaa img {
     width: 100%;
 }
-.aaa .more_inf {
+.aaa .more__info {
     font-family: fantasy, cursive;
 }
 
 @media (max-width:768px) {
-.aaa { text-align: center;
-}
+    .aaa { text-align: center;
+    }
 }
 .centered-main-page-element {
     display: block;
@@ -56,7 +56,9 @@ button {
 button:hover {
     color: #3a3A3a;
 }
-/* Heading */
+
+
+/* !----------- Heading ------------- */
 h3,
 label[for='new-task'] {
     color: #333;
@@ -92,7 +94,8 @@ input#new-task {
     width: 318px;
 }
 
-/* Task list */
+
+/* !----------- Task list ------------- */
 li {
     overflow: hidden;
     padding: 20px 0;
@@ -127,13 +130,15 @@ button.delete img:hover {
     transform: rotateZ(0);
 }
 
-/* Completed */
+
+/* !----------- Completed ------------- */
 ul#completed-tasks label {
     text-decoration: line-through
     color: #888;
 }
 
-/* Edit Task */
+
+/* !----------- Edit Task ------------- */
 ul li input[type=text] {
     display:none
 }
